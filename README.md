@@ -3,17 +3,17 @@
 import random
 import time
 
-# List of possible colors
+# List of possible colours
 colors = ["red", "blue", "green", "yellow"]
 
-# Function to generate a random sequence of colors
+# Function to generate a random sequence of colours
 def generate_sequence(length):
-    return [random.choice(colors) for _ in range(length)]
+    return [random.choice(colours) for _ in range(length)]
 
-# Function to display the sequence of colors to the player
+# Function to display the sequence of colours to the player
 def display_sequence(sequence):
-    for color in sequence:
-        print(color)
+    for colour in sequence:
+        print(colour)
         time.sleep(1)
         # Clear the screen
         print("\033c", end="")
@@ -21,7 +21,7 @@ def display_sequence(sequence):
 
 # Function to get the player's guess
 def get_player_guess():
-    guess = input("Enter the colors in the sequence, separated by spaces: ")
+    guess = input("Enter the colours in the sequence, separated by spaces: ")
     return guess.split()
 
 # Function to check if the player's guess matches the sequence
