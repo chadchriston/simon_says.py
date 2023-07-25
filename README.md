@@ -1,59 +1,52 @@
 # Simon-Says
+```python
+import random
+import time
 
-#python 
+# List of possible colors
+colors = ["red", "blue", "green", "yellow"]
 
-#list of colours
-colours = ['red', 'blue', 'green', 'yellow']
+# Function to generate a random sequence of colors
+def generate_sequence(length):
+    return [random.choice(colors) for _ in range(length)]
 
-#initialize an empty list to store the sequence
-    sequence = []
+# Function to display the sequence of colors to the player
+def display_sequence(sequence):
+    for color in sequence:
+        print(color)
+        time.sleep(1)
+        # Clear the screen
+        print("\033c", end="")
+        time.sleep(0.5)
 
-#Function to generate the next colour in the sequence
-    def generate_next_colour():
-      return random.choice(colours)
+# Function to get the player's guess
+def get_player_guess():
+    guess = input("Enter the colors in the sequence, separated by spaces: ")
+    return guess.split()
 
-#Function to play the sequemnce
-    def play_sequence():
-       for colour in sequence:
-       print(colour)
-       time.sleep(1)
-  
-#Function to check if the player's input matches the sequence
-        def check_input(input_sequence):
-          if input_sequence == sequence:
-            return True
-          else:
-            return False
+# Function to check if the player's guess matches the sequence
+def is_guess_correct(guess, sequence):
+    return guess == sequence
 
-#Main game loop
-def simon_says():
-  print("Welcome to Simon Say!")
-  time.sleep(1)
-  print("Get Ready...")
-  time.sleep(1)
+# Function to play the Simon Says game
+def play_game():
+    level = 1
+    sequence = generate_sequence(level)
+    
+    while True:
+        print("Level", level)
+        display_sequence(sequence)
+        
+        player_guess = get_player_guess()
+        if not is_guess_correct(player_guess, sequence):
+            print("Game over! You reached level", level)
+            break
+        
+        level += 1
+        sequence = generate_sequence(level)
+    
+    print("Thanks for playing!")
 
-#Generate the first colour in the sequence
-next_colour = generate_next_colour()
-sequence.append(next_colour)
-
-#Play the sequence
-play_sequence()
-
-#Prompt the player for their input
-print("Your turn!Enter the colours in the sequence, one at a time.")
-  play_sequence = []
-  for i in range(len(sequence)):
-  player_colour = input("Colour: ")
-
-player_sequence.append(player_colour)
-
-  #Check if the player's input matches the sequences
-  if check_input(player_sequence):
-    print("Congratulations! You got it right!")
-    else:
-        print("Oops! That's incorrect. Game over.")
-
-        #Start the game
-        simon_says()
-
-      
+# Start the game
+play_game()
+```
